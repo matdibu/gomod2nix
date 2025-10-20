@@ -79,6 +79,9 @@ func common(directory string) ([]*goModDownload, map[string]string, error) {
 			}
 		}
 
+		log.Errorf("exit code err is %+v", err)
+		log.Errorf("json output is %s", string(stdout))
+
 		dec := json.NewDecoder(bytes.NewReader(stdout))
 		for {
 			var dl *goModDownload
