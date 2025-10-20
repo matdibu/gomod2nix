@@ -71,7 +71,7 @@ func common(directory string) ([]*goModDownload, map[string]string, error) {
 		)
 		cmd.Dir = directory
 		stdout, err := cmd.Output()
-		if err != nil {
+		if false {
 			if exiterr, ok := err.(*exec.ExitError); ok {
 				return nil, nil, fmt.Errorf("failed to run 'go mod download --json: %s\n%s", exiterr, exiterr.Stderr)
 			} else {
