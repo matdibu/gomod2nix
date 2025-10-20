@@ -185,6 +185,7 @@ func GeneratePkgs(directory string, goMod2NixPath string, numWorkers int) ([]*sc
 			h := sha256.New()
 			err := nar.DumpPathFilter(h, dl.Dir, sourceFilter)
 			if err != nil {
+				log.Errorf("dibux: DumpPathFilter: %+v", err)
 				return err
 			}
 			digest := h.Sum(nil)
@@ -210,6 +211,7 @@ func GeneratePkgs(directory string, goMod2NixPath string, numWorkers int) ([]*sc
 
 	err = executor.Wait()
 	if err != nil {
+		log.Errorf("dibux: executor wait: %+v", err)
 		return nil, err
 	}
 
