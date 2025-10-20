@@ -65,7 +65,7 @@ func generateFunc(cmd *cobra.Command, args []string) {
 		outFile := goMod2NixPath
 		pkgs, err := generate.GeneratePkgs(directory, goMod2NixPath, maxJobs)
 		if err != nil {
-			panic(fmt.Errorf("error generating pkgs: %v", err))
+			log.Errorf("error generating pkgs: %v", err)
 		}
 
 		var goPackagePath string
